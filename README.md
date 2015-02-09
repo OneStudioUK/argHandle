@@ -9,7 +9,10 @@ npm install arghandle
 ##Implementation
 Require this module into your project
 ```
-const arghandle = require('arghandle');
+var arghandle = require('arghandle'),
+    handle = new arghandle();
+
+    handle.process();
 ```
 
 You can test this by running 
@@ -30,7 +33,33 @@ A handler object should be designed like the following:
 }
 ```
 
-Their are two methods to append your argument handlers.
+Their are three methods to append your argument handlers.
+####Initially declaring the options
+```
+var handle = new arghandle({
+    // This defines the start point for arguments to get processed
+    startIndex: 5,
+    // This defines the custom argument handlers
+    definedArgs: [
+        {
+            keys: ['--yes-debug', '-D'],
+            method: function (self) {
+                appConfig.debug = true;
+            },
+            description: 'Set application to debug'
+        },
+        {
+            keys: ['--port', '-P'],
+            method: function (self) {
+                appConfig.port = self.getNext();
+            },
+            description: 'Set application listning port'
+        }
+    ],
+    // This defines arguments passed by the command line
+    argv: process.argv
+}); 
+```
 ####Concating an array of handlers
 ```
 var appConfig = {
@@ -39,7 +68,7 @@ var appConfig = {
     hostname: 'localhost'
 };
 
-arghandle.concat([
+handle.concat([
     {
         keys: ['--debug', '-D'],
         method: function (self) {
@@ -58,7 +87,7 @@ arghandle.concat([
 ```
 ####Appending a single handler
 ```
-arghandle.push({
+handle.push({
     keys: ['--hostname', '-H'],
     method: function (self) {
         appConfig.hostname = self.getNext();
@@ -68,13 +97,17 @@ arghandle.push({
 ```
 
 ####Defining the start position for arguments
+This is declared in the initial method. This is done as follows...
 ```
-arghandle.ignoreFirstN(2);
+var handle = new arghandle({
+    startIndex: 2
+});
 ```
 
 ###Processing the arguments
-This is done by calling the method as follows
+This is done by calling the method as follows...
 ```
-arghandle.process(process.argv);
+handle.process(process.argv); // if argv is not declared in the initial method
+handle.process(); // if argv was included in the initial method
 ```
 This will return false if an undefined argument is sent

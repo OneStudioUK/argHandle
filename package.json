@@ -1,6 +1,6 @@
 {
   "name": "arghandle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "library to parse commandline-args and options.",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,10 @@
   },
   "homepage": "https://github.com/OneStudioUK/argHandle",
   "dependencies": {
-    "mocha": "^2.1.0",
-    "underscore": "^1.7.0",
-    "unit.js": "^1.1.2"
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "2.1.0",
+    "unit.js": "1.1.2"
   }
 }

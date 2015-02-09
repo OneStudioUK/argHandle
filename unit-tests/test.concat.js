@@ -1,9 +1,7 @@
 it('Concat Test', function() {
 	// require the module
-	const arghandle = require('../index');
-	arghandle.reset();
-	// define start position
-	arghandle.ignoreFirstN(5);
+	var arghandle = require('../index'),
+		handler = new arghandle({startIndex: 5});
 	
 	// Define properties that will get updated
 	var appConfig = {
@@ -12,7 +10,7 @@ it('Concat Test', function() {
 	}
 
 	// concat custom handlers
-	arghandle.concat([
+	handler.concat([
 	    {
 	        keys: ['--yes-debug', '-D'],
 	        method: function (self) {
@@ -30,7 +28,7 @@ it('Concat Test', function() {
 	]);
 
 	// process arguments & check for any undefined variables
-	test.assert(arghandle.process(process.argv) == true);
+	test.assert(handler.process(process.argv) == true);
 	// check if the properties have been updated
 	test.assert(appConfig.debug == true);
 	test.assert(appConfig.port == 1994);

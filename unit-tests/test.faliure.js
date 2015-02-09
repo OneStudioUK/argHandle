@@ -1,10 +1,8 @@
 it('Faliure Test', function() {
 	// require the module
-	const arghandle = require('../index');
-	arghandle.reset();
-	// define start position
-	arghandle.ignoreFirstN(5);
+	var arghandle = require('../index'),
+		handler = new arghandle();
 	
 	// process arguments & check for any undefined variables
-	test.assert(arghandle.process(process.argv) == false);
+	test.assert(handler.process(process.argv) == false);
 });
