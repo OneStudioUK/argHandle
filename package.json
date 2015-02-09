@@ -1,0 +1,31 @@
+{
+  "name": "argHandle",
+  "version": "0.0.1",
+  "description": "library to parse commandline-args and options.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OneStudioUK/argHandle"
+  },
+  "keywords": [
+    "commandline-args",
+    "arguments",
+    "node",
+    "process",
+    "args",
+    "parse",
+    "arguments"
+  ],
+  "author": "Muhammad Dadu <muhammad@dadu.co>",
+  "license": "Apache License, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/OneStudioUK/argHandle/issues"
+  },
+  "homepage": "https://github.com/OneStudioUK/argHandle",
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
+}
