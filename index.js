@@ -2,10 +2,37 @@ const _ = require('underscore');
 
 function ArgHandle() {
 	// create a index to store the itteration
-	this.index = 2;
-	//argv
+	this.startIndex = 2;
+	// argv
 	this.argv = [];
 	// create an array of args permitted
+	this.definedArgs = [];
+	// add default help args
+	this.definedArgs.push({
+		keys: ['--help', '-h'],
+		method: function (self) {
+			// log all the commands to the terminal [this.args]
+			console.log("\nUsage: script <command> \n");
+			console.log("Available commands:");
+			for (var argObjectIndex in self.definedArgs) {
+				var argObject = self.definedArgs[argObjectIndex];
+				console.log(" -", argObject.description);
+				console.log("    Usage: ", JSON.stringify(argObject.keys), "\n")
+			};
+			
+		},
+		description: 'This argument shows the list of arguments available'
+	});
+	
+	// reset all parameteres
+	reset();
+}
+
+module.exports = new ArgHandle();
+
+function reset() {
+	this.index = this.startIndex;
+	this.argv = [];
 	this.definedArgs = [];
 
 	// add default help args
@@ -26,7 +53,11 @@ function ArgHandle() {
 	});
 }
 
-module.exports = new ArgHandle();
+ArgHandle.prototype.reset = reset;
+
+ArgHandle.prototype.ignoreFirstN = function (n) {
+	this.startIndex  = n;
+}
 
 ArgHandle.prototype.concat = function (argObjectArray) {
 	// append customArgs to array
@@ -46,8 +77,8 @@ ArgHandle.prototype.getNext = function() {
 ArgHandle.prototype.process = function (argv) {
 	// store the arguments
 	this.argv = argv;
-	// reset index to 2
-	this.index = 2;
+	// reset index
+	this.index = this.startIndex;
 	// Process enviromental variables
 	for (var argl = this.argv.length; this.index < argl; this.index++) {
 		var arg = this.argv[this.index],

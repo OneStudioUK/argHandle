@@ -1,10 +1,10 @@
 {
-  "name": "argHandle",
-  "version": "0.0.1",
+  "name": "arghandle",
+  "version": "0.0.2",
   "description": "library to parse commandline-args and options.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha unit-tests --reporter spec --yes-debug --port 1994"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/OneStudioUK/argHandle",
   "dependencies": {
-    "underscore": "^1.7.0"
+    "mocha": "^2.1.0",
+    "underscore": "^1.7.0",
+    "unit.js": "^1.1.2"
   }
 }
