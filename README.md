@@ -1,4 +1,4 @@
-# argHandle
+# argHandle [![Build Status](https://travis-ci.org/OneStudioUK/argHandle.svg)](https://travis-ci.org/OneStudioUK/argHandle)
 Library to parse commandline-args and options.
 
 # Usage
