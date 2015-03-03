@@ -1,0 +1,31 @@
+{
+  "name": "arghandle",
+  "main": "index.js",
+  "version": "0.0.3",
+  "homepage": "https://github.com/OneStudioUK/argHandle",
+  "authors": [
+    "Muhammad Dadu <muhammad@dadu.co>"
+  ],
+  "description": "library to parse commandline-args and options.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "commandline-args",
+    "arghandle",
+    "process",
+    "args",
+    "parse",
+    "arguments"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
