@@ -91,7 +91,7 @@ const _ = require('underscore');
 				return false;
 			}
 
-			argObject.method(this)
+			argObject.method.call(this, this);
 		}
 		return true;
 	}
