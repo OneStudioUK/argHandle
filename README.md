@@ -2,11 +2,11 @@
 Library to parse commandline-args and options.
 
 # Usage
-##Install
+## Install
 ```
 npm install arghandle
 ```
-##Implementation
+## Implementation
 Require this module into your project
 ```
 var arghandle = require('arghandle'),
@@ -21,7 +21,7 @@ node yourscript.js --help
 ```
 This is a reserved keyword. This will show all the handelers that have been defined
 
-###Defining custom argument handlers
+### Defining custom argument handlers
 A handler object should be designed like the following:
 ```
 {
@@ -34,7 +34,7 @@ A handler object should be designed like the following:
 ```
 
 Their are three methods to append your argument handlers.
-####Initially declaring the options
+#### Initially declaring the options
 ```
 var handle = new arghandle({
     // This defines the start point for arguments to get processed
@@ -60,7 +60,7 @@ var handle = new arghandle({
     argv: process.argv
 }); 
 ```
-####Concating an array of handlers
+#### Concating an array of handlers
 ```
 var appConfig = {
     debug: false,
@@ -85,7 +85,7 @@ handle.concat([
     }
 ]);
 ```
-####Appending a single handler
+#### Appending a single handler
 ```
 handle.push({
     keys: ['--hostname', '-H'],
@@ -96,7 +96,7 @@ handle.push({
 });
 ```
 
-####Defining the start position for arguments
+#### Defining the start position for arguments
 This is declared in the initial method. This is done as follows...
 ```
 var handle = new arghandle({
@@ -104,7 +104,7 @@ var handle = new arghandle({
 });
 ```
 
-###Processing the arguments
+### Processing the arguments
 This is done by calling the method as follows...
 ```
 handle.process(process.argv); // if argv is not declared in the initial method
